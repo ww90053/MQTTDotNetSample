@@ -11,7 +11,10 @@
 
 # 專案檔說明
 ## MQTT_BorkerServer
-Borker Server，相當於中介的伺服器，用於
+相當於中介的伺服器，用於拋轉訊息
 
 ## MQTT_Publish
+發佈端，用於發送訊息
+
 ## MQTT_SubScribe
+訂閱端，用於接收訊息
