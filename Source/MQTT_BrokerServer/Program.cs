@@ -8,7 +8,7 @@ using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace MQTT_TEST2
+namespace MQTT_BrokerServer
 {
     class Program
     {
