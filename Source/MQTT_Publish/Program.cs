@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MQTT_SubScribe
+namespace MQTT_Publish
 {
     class Program
     {
@@ -33,10 +33,10 @@ namespace MQTT_SubScribe
         static string MQTT_SERVER_IP = "localhost";
 
         /// <summary>
-        /// 
+        /// 主程式
         /// </summary>
         /// <param name="args"></param>
-        static  void Main(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("5秒後開始 連線到MQTT Boker伺服器");
             Thread.Sleep(5000);
@@ -48,8 +48,8 @@ namespace MQTT_SubScribe
             var options = new MqttClientOptionsBuilder()
             .WithTcpServer(MQTT_SERVER_IP, port) // Port is optional
             .Build();
-            
-          var t=  mqttClient.ConnectAsync(options).Result;
+
+            var t = mqttClient.ConnectAsync(options).Result;
             if (MQTT_SERVER_IP != "")
             {
                 Console.WriteLine("連線伺服器為:" + MQTT_SERVER_IP);

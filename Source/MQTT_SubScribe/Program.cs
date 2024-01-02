@@ -32,13 +32,10 @@ namespace MQTT_SubScribe
         static string MQTT_SERVER_IP = "localhost";
 
         /// <summary>
-        /// 要拋轉的API站台路徑
-        /// </summary>
-        //static string HTTP_API_URL = "https://serviceweb066.iscom.com.tw/IOTAPI/PostV3";
-
-
-        /// <summary>
-        /// 參數EX: localhost 8883 https://serviceweb066.iscom.com.tw/IOTAPI/PostV3
+        /// 參數 
+        /// args[0] IP
+        /// args[1] port
+        /// EX:  MQTT_SubScribe.exe localhost 8883
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
@@ -80,7 +77,9 @@ namespace MQTT_SubScribe
         }
 
         /// <summary>
-        /// 抓取參數 args[0] port
+        /// 抓取參數 
+        /// args[0] IP
+        /// args[1] port
         /// </summary>
         /// <param name="args"></param>
         public static void LoadArgs(string[] args)
@@ -93,7 +92,6 @@ namespace MQTT_SubScribe
             }
             MQTT_SERVER_IP = args[0];
             port = int.Parse(args[1]);
-            //HTTP_API_URL = args[2];
         }
         /*
         public static async Task SendHttpRequest(string jsondata, string topic)

@@ -20,7 +20,9 @@ namespace MQTT_BrokerServer
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+            //抓取參數 args[0] port
             LoadArgs(args);
+            //啟動Mqtt伺服器
             StartMqttServer();
         }
         /// <summary>
@@ -38,7 +40,9 @@ namespace MQTT_BrokerServer
             port = int.Parse(args[0]);
         }
 
-        //啟動Mqtt服務器
+        /// <summary>
+        /// 啟動Mqtt伺服器
+        /// </summary>
         private static async void StartMqttServer()
         {
             try
@@ -61,7 +65,7 @@ namespace MQTT_BrokerServer
                 //設定埠號
                 options.DefaultEndpointOptions.Port = port;
 
-                //創建Mqtt服務器
+                //創建Mqtt伺服器
                 mqttServer = new MqttFactory().CreateMqttServer();
 
                 //開啟訂閱事件
@@ -115,7 +119,7 @@ namespace MQTT_BrokerServer
                     Console.WriteLine($"客戶端[{ClientId}]已斷開連接");
                 });
 
-                //啟動服務器
+                //啟動伺服器
                 await mqttServer.StartAsync(options);
 
                 Console.WriteLine("服務啟動成功！輸入任意按鈕停止服務！");
@@ -125,7 +129,7 @@ namespace MQTT_BrokerServer
             }
             catch (Exception e)
             {
-                Console.Write($"服務器啟動失敗 Msg：{e}");
+                Console.Write($"伺服器啟動失敗 Msg：{e}");
             }
 
         }
