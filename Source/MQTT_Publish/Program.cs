@@ -58,24 +58,31 @@ namespace MQTT_Publish
             string inputLine = "";
             while (inputLine != "exit")
             {
-                Console.WriteLine("請輸入要發佈的訊息(若要中斷操作,請輸入exit)");
-                inputLine = Console.ReadLine();
-                //建立發佈參數
-                var msg = new MqttApplicationMessageBuilder()
-                    //主題 
-                    .WithTopic(topic)
-                     //內文
-                     .WithPayload(inputLine)
-                     //Qos:1,AtLeastOnce
-                     .WithQualityOfServiceLevel(MQTTnet.Protocol.MqttQualityOfServiceLevel.AtLeastOnce)
-                     //不保留訊息
-                     .WithRetainFlag(false)
-                     .Build();
-                mqttClient.PublishAsync(msg);
+                try
+                {
+                    Console.WriteLine("請輸入要發佈的訊息(若要中斷操作,請輸入exit)");
+                    inputLine = Console.ReadLine();
+                    //建立發佈參數
+                    var msg = new MqttApplicationMessageBuilder()
+                        //主題 
+                        .WithTopic(topic)
+                         //內文
+                         .WithPayload(inputLine)
+                         //(可選)Qos:1,AtLeastOnce
+                         .WithQualityOfServiceLevel(MQTTnet.Protocol.MqttQualityOfServiceLevel.AtLeastOnce)
+                         //(可選)不保留訊息
+                         .WithRetainFlag(false)
+                         .Build();
+                    mqttClient.PublishAsync(msg);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine("連線發生錯誤(若要中斷操作,請輸入exit)");
+                }
             }
 
-            // See https://aka.ms/new-console-template for more information
-            Console.WriteLine("Hello, World!");
+            
 
 
         }
