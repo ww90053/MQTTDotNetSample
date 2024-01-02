@@ -10,7 +10,7 @@
 ## .NetFramework版本:8，理論上可以因應開發需要降版，具體請可自行測驗看看
 
 # 專案檔說明
-## MQTT_BorkerServer
+## MQTT_BrokerServer
 相當於中介的伺服器，用於拋轉訊息
 
 ## MQTT_Publish
